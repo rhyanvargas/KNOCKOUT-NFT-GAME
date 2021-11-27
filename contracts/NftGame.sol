@@ -48,7 +48,7 @@ contract NftGame is ERC721 {
     
     // Below, I name the NFT Token ("NAME","SYMBOL")
   )
-    ERC721("KNOCKOUT", "KO") 
+    ERC721("KNOCKOUT NFT", "KO") 
   { for(uint i=0; i < characterNames.length; i++) {
       // Assign attributes to each character and save them to contract
       defaultCharacters.push(CharacterAttributes({
@@ -111,9 +111,9 @@ contract NftGame is ERC721 {
         string(
           abi.encodePacked(
             '{"name": "', charAttributes.name, ' -- NFT #: ', Strings.toString(_tokenId), '",',
-            '"description":"Mike Tyson Punch Out - Blockchain Style!" ,',
-            '"image":',charAttributes.imageURI,',',
-            '"attributes":[{"trait_types": "Health Points",''"value":' ,strHp,',''"max_value":' ,strMaxHp,',},{"trait_types": "Attack Damage","value":' ,strAttack,',"max_value":' ,strPowerAttackDamage,',}]'
+            '"description":"Mike Tyson Punch Out Charcters - NFT Style!" ,',
+            '"image":"',charAttributes.imageURI,'",',
+            '"attributes":[{"trait_type": "Health Points",''"value":' ,strHp,',''"max_value":' ,strMaxHp,'},{"trait_type": "Attack Damage","value":' ,strAttack,'},{"display_type": "boost_number","trait_type": "Power Attack","value":' ,strPowerAttackDamage,'}]}'
           )
         )
       )
