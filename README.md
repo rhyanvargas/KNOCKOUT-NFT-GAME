@@ -1,6 +1,10 @@
-# Basic Sample Hardhat Project
+# KNOCKOUT NFT!
+*Tech Stack: Solidity \\ Hardhat \\ OpenZeppelin \\  Alchemy \\ React*
+### View collection here: https://testnets.opensea.io/collection/knockout-nft
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+### About
+This is a fun simple turn-based game featuring Mike Tyson's Punch Out characters. However, this allows people to pick and own their character as a NFT!
+
 
 Try running some of the following tasks:
 
