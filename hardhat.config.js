@@ -24,5 +24,11 @@ module.exports = {
       url: process.env.ALCHEMY_URL_KEY,
       accounts:[process.env.RINKEBY_PRIVATE_KEY]
     }
+  },
+  settings: {
+    optimizer: {
+      enabled: true,
+      runs: 1000,
+    },
   }
 };

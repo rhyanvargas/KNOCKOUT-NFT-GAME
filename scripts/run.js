@@ -14,6 +14,10 @@ async function main() {
   const hp =  [1000,900,700,600,500,400];
   const attack = [90,30,50,60,70,80];
   const powerAttack = [300,80,100,120,150,200];
+  const bossName = "The Pacman"
+  const bossHp = 10000
+  const bossURL = "https://google.com"
+  const bossAttack = 60
 
   // Create local Ethereum blockchain
   const gameContract = await gameContractFactory.deploy(
@@ -21,22 +25,36 @@ async function main() {
     imageURLs,
     hp,
     attack,
-    powerAttack
+    powerAttack,
+    bossName,
+    bossURL,
+    bossHp,
+    bossAttack
   );
 
-  gameContract.deployed();
+  await gameContract.deployed();
   console.log("CONTRACT DEPLOYED TO: ", gameContract.address)
 
-  for(let i=0;i<characters.length;i++){
-    // Mint All NFTS
-    let txn;
-    txn = await gameContract.mintCharacter(i);
+  let txn;
+  txn = await gameContract.mintCharacter(0)
+  await txn.wait();
+
+  try {
+    // Necessary to catch "require() error" in contract and print error to console
+    // See why here: https://docs.soliditylang.org/en/v0.8.0/control-structures.html#error-handling-assert-require-revert-and-exceptions
+    await gameContract.attackBoss();
     await txn.wait();
-    
-    // Get me the NFT Data
-    let returnedTokenURI = await gameContract.tokenURI(i+1);
-    console.log("\n=========Token URI:", returnedTokenURI);
-  }
+  } catch (error) {
+    console.log(error)
+  } 
+
+  try {
+    await gameContract.attackBoss();
+    await txn.wait();
+  } catch (error) {
+    console.log(error)
+  } 
+
 }
 
 const runMain = async() => {
